@@ -1,3 +1,4 @@
+# rubocop:disable Lint/Syntax
 class CreateAccount < ApplicationService
   def initialize(payload, from_fintera = false)
     @payload = payload
