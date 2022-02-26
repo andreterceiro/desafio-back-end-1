@@ -1,3 +1,4 @@
+# rubocop: disable RSpec/StubbedMock
 RSpec.describe CreateRegistration do
   describe "#call" do
     subject(:call) { described_class.call(payload) }
@@ -74,3 +75,4 @@ RSpec.describe CreateRegistration do
     end
   end
 end
+# rubocop: enable RSpec/StubbedMock

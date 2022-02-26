@@ -76,7 +76,7 @@ Para rodar o rubocop, rode: `rubocop --parallel`
 
 
 ## Inicialização
-Na raiz do projeto, execute (inicie cada linha com um ```sudo``` no Linux se necessário):
+Na raiz do projeto, execute (inicie cada linha com um ```sudo``` no Linux se necessário). E provavelmente terá que fazer em diferentes terminais, porque o Docker "travará" um:
 ```
 sudo /etc/init.d/postgresql stop
 sudo docker-compose up
