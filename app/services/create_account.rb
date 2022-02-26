@@ -10,7 +10,7 @@ class CreateAccount < ApplicationService
 
   # rubocop: disable Metrics/MethodLength
   def call
-    if account_valid?
+    if Account.valid? @payload
       account = Account.new(account_params)
       if account.save && User.insert_all(users_params(account))
         Result.new(true, account)
@@ -24,12 +24,6 @@ class CreateAccount < ApplicationService
     end
   end
   # rubocop: enable Metrics/MethodLength
-
-  def account_valid?
-    return false if @payload.blank?
-
-    true
-  end
 
   # rubocop: disable Metrics/MethodLength
   def account_params
