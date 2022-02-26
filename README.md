@@ -73,3 +73,15 @@ O desafio back-end permite execução da suite de testes em paralelo, através d
 ## Rubocop
 
 Para rodar o rubocop, rode: `rubocop --parallel`
+
+
+## Inicialização
+Na raiz do projeto, execute (inicie cada linha com um ```sudo``` no Linux se necessário):
+```
+sudo /etc/init.d/postgresql stop
+sudo docker-compose up
+foreman start
+```
+
+Estou considerando que já fez 1 vez o:
+`cp .env.example .env`
