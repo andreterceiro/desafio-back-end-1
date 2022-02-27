@@ -5,7 +5,8 @@ RSpec.describe "Api::V1::RegistrationsController", type: :request do
     let(:params) do
       {
         account: {
-          name: Faker::Superhero.name, from_partner: true,
+          name: Faker::Superhero.name, 
+          from_partner: true,
           users: [{
             email: Faker::Internet.email,
             first_name: Faker::Name.female_first_name,
