@@ -11,6 +11,13 @@ module Api
         end
       end
 
+      def index
+        all = []
+        all.push(["Users: ", User.all])
+        all.push(["Acounts: ", Account.all]) 
+        render json: all, status: :created
+      end
+
       private
 
       def create_params
