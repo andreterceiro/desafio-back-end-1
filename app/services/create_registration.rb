@@ -13,8 +13,6 @@ class CreateRegistration < ApplicationService
               end
 
     return Result.new(true, @result.data) if @result.success?
-
-    @result
   end
 
   private

@@ -4,7 +4,6 @@ class Account < ApplicationRecord
 
   def self.valid? payload
     return false if payload.blank?
-
     true
   end
 end
