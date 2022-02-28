@@ -14,7 +14,7 @@ module Api
       def index
         all = []
         all.push(["Users: ", User.all])
-        all.push(["Acounts: ", Account.all]) 
+        all.push(["Acounts: ", Account.all])
         render json: all, status: :created
       end
 
