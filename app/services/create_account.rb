@@ -1,15 +1,16 @@
+# rubocop: disable Rails/SkipsModelValidations
 class CreateAccount < ApplicationService
+  # rubocop: disable Style/OptionalBooleanParameter
   def initialize(payload, from_fintera = false)
+    # rubocop: enable Style/OptionalBooleanParameter
     @payload = payload
     @from_fintera = from_fintera
     @errors = []
   end
 
+  # rubocop: disable Metrics/MethodLength
   def call
-    if !is_account_valid?
-      @errors << "Account is not valid"
-      Result.new(false, nil, @errors.join(","))
-    else
+    if Account.valid? @payload
       account = Account.new(account_params)
       if account.save && User.insert_all(users_params(account))
         Result.new(true, account)
@@ -17,15 +18,14 @@ class CreateAccount < ApplicationService
         @errors << account.errors.full_messages
         Result.new(false, nil, @errors.join(","))
       end
+    else
+      @errors << "Account is not valid"
+      Result.new(false, nil, @errors.join(","))
     end
   end
+  # rubocop: enable Metrics/MethodLength
 
-  def is_account_valid?
-    return false if @payload.blank?
-
-    true
-  end
-
+  # rubocop: disable Metrics/MethodLength
   def account_params
     if @from_fintera
       {
@@ -53,4 +53,6 @@ class CreateAccount < ApplicationService
       }
     end
   end
+  # rubocop: enable Metrics/MethodLength
 end
+# rubocop: enable Rails/SkipsModelValidations
